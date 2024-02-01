@@ -1,0 +1,728 @@
+<%- include("../fragment/nav") %>
+<style>
+.casil-input{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: gray ;
+border-radius: 5px 5px 5px 5px;
+color: rgb(255, 255, 255);
+font-size: small;
+padding-bottom: 0;
+padding-left: 0;
+padding-right: 0;
+}
+
+
+#notifcontainer{
+    padding: 10px;
+    margin-bottom: 20px;
+   background-color:gray;
+       color:white;
+       border: 1px solid rgb(255, 255, 255);
+       border-radius: 5px 5px 5px 5px;
+}
+   #i1, #i2,#i3,#i4{
+    color:black;
+   }
+   #butt{
+    display: none;
+   }
+
+    div {
+        position: relative;
+    }
+    .it{
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+    .dan-btn{
+        border: 1px solid rgb(255, 255, 255);
+        color:white
+    }
+    .dan-btn:hover{
+        background-color: white;
+    }
+    .danl{
+            padding: 5%;
+       background-color: red;
+         border-radius: 10px 0 0 10px;
+
+    }
+    .danr{
+        background-color:    #6c757d;
+        padding: 5%;
+        border: 1px solid;
+         border-radius:0 10px 10px 0;
+    }
+</style>
+
+
+<!-- Ids in the navbar a-href and ids in the content should match-->
+<br><br>
+<div id="scrollContainer" style="height: 350px; overflow-y: scroll; overflow-x: hidden;">
+    <div class="row">
+        <div class="col-md-3 ">
+            <div data-bs-spy="scroll" data-bs-target="#navId" data-bs-offset="0" data-bs-smooth-scroll="true" style="position: sticky; top: 20px;">
+                <div id="navId">   <h1 style="margin-left: 2%;">Account Management</h1><hr id="">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                        <a class="nav-link active" href="#section1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                            <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                            <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z"/>
+                          </svg> In-game Name</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#section2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fingerprint" viewBox="0 0 16 16">
+                                <path d="M8.06 6.5a.5.5 0 0 1 .5.5v.776a11.5 11.5 0 0 1-.552 3.519l-1.331 4.14a.5.5 0 0 1-.952-.305l1.33-4.141a10.5 10.5 0 0 0 .504-3.213V7a.5.5 0 0 1 .5-.5Z"/>
+                                <path d="M6.06 7a2 2 0 1 1 4 0 .5.5 0 1 1-1 0 1 1 0 1 0-2 0v.332q0 .613-.066 1.221A.5.5 0 0 1 6 8.447q.06-.555.06-1.115zm3.509 1a.5.5 0 0 1 .487.513 11.5 11.5 0 0 1-.587 3.339l-1.266 3.8a.5.5 0 0 1-.949-.317l1.267-3.8a10.5 10.5 0 0 0 .535-3.048A.5.5 0 0 1 9.569 8m-3.356 2.115a.5.5 0 0 1 .33.626L5.24 14.939a.5.5 0 1 1-.955-.296l1.303-4.199a.5.5 0 0 1 .625-.329"/>
+                                <path d="M4.759 5.833A3.501 3.501 0 0 1 11.559 7a.5.5 0 0 1-1 0 2.5 2.5 0 0 0-4.857-.833.5.5 0 1 1-.943-.334m.3 1.67a.5.5 0 0 1 .449.546 10.7 10.7 0 0 1-.4 2.031l-1.222 4.072a.5.5 0 1 1-.958-.287L4.15 9.793a9.7 9.7 0 0 0 .363-1.842.5.5 0 0 1 .546-.449Zm6 .647a.5.5 0 0 1 .5.5c0 1.28-.213 2.552-.632 3.762l-1.09 3.145a.5.5 0 0 1-.944-.327l1.089-3.145c.382-1.105.578-2.266.578-3.435a.5.5 0 0 1 .5-.5Z"/>
+                                <path d="M3.902 4.222a5 5 0 0 1 5.202-2.113.5.5 0 0 1-.208.979 4 4 0 0 0-4.163 1.69.5.5 0 0 1-.831-.556m6.72-.955a.5.5 0 0 1 .705-.052A4.99 4.99 0 0 1 13.059 7v1.5a.5.5 0 1 1-1 0V7a3.99 3.99 0 0 0-1.386-3.028.5.5 0 0 1-.051-.705M3.68 5.842a.5.5 0 0 1 .422.568q-.044.289-.044.59c0 .71-.1 1.417-.298 2.1l-1.14 3.923a.5.5 0 1 1-.96-.279L2.8 8.821A6.5 6.5 0 0 0 3.058 7q0-.375.054-.736a.5.5 0 0 1 .568-.422m8.882 3.66a.5.5 0 0 1 .456.54c-.084 1-.298 1.986-.64 2.934l-.744 2.068a.5.5 0 0 1-.941-.338l.745-2.07a10.5 10.5 0 0 0 .584-2.678.5.5 0 0 1 .54-.456"/>
+                                <path d="M4.81 1.37A6.5 6.5 0 0 1 14.56 7a.5.5 0 1 1-1 0 5.5 5.5 0 0 0-8.25-4.765.5.5 0 0 1-.5-.865m-.89 1.257a.5.5 0 0 1 .04.706A5.48 5.48 0 0 0 2.56 7a.5.5 0 0 1-1 0c0-1.664.626-3.184 1.655-4.333a.5.5 0 0 1 .706-.04ZM1.915 8.02a.5.5 0 0 1 .346.616l-.779 2.767a.5.5 0 1 1-.962-.27l.778-2.767a.5.5 0 0 1 .617-.346m12.15.481a.5.5 0 0 1 .49.51c-.03 1.499-.161 3.025-.727 4.533l-.07.187a.5.5 0 0 1-.936-.351l.07-.187c.506-1.35.634-2.74.663-4.202a.5.5 0 0 1 .51-.49"/>
+                              </svg> Personal Information</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#section3"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+                                <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2M2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+                              </svg> Riot Account Sign-In</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9" >
+            <div id="section1" style=" margin-bottom:10%;margin-right: 5%; margin-left:2%;">
+          <div class="row">
+            <div class="col-md-5 bg-dark text-light danl"style="">
+                <h3 class="">IGN</h3>
+             <p>   Your In-game Name is used by players to find you through the social panel in our games.</p>
+            </div>
+           
+            <div class="col-md-7 text-center mx-auto danr">
+                <div id="ign"> 
+                    <form method="post" action="/update_player/ign" class="submitForm" >
+                        <input type="text" id="myInput" hidden name="myInput" class="inputBox"  >
+                       
+                       <div class="row">
+                        <div class="col-md-6">
+
+                        <div class="container-fluid casil-input text-left">GAME NAME
+                        <input type="text" id="i1" name="name" class="container-fluid d" >
+                        </div>
+                    </div>
+                        <div class="col-md-6">
+                            <div class="container-fluid casil-input text-left">RIOT ID
+                            <input type="text" id="i6" name="riot_id" class="container-fluid d" >
+                        </div>
+                    </div>
+                </div>
+                       <div id="notifcontainer">
+                                <p id="notif">
+                                    Remeber That You can Only Change Your Ingame Name Every 30 Days. 
+                                </p>
+                       </div>
+                 
+                        <input type="submit" name="" class="btn dan-btn "id="btun"disabled style="width: 100%;height: 20%;"value="Save Changes">
+                     </form>
+                    
+                </div> 
+            </div>
+      
+          </div>
+
+
+            </div>
+
+            <div id="section2" class="bg-secondary" style=" margin-bottom: 10%;margin-right: 5%; margin-left:2%;">
+                <div class="row">
+                 
+                    <div class="col-md-5 bg-dark text-light danl">
+                        <h3 class="">Personal Information</h3>
+                     <p>  
+                        This information is private and will not be shared with other players. Read the Riot Privacy Notice anytime!</p>
+                    </div>  
+                    
+                 
+                    <div class="col-md-7 danr">
+                        <form method="post" action="/update_player/PersonalInfo" class="submitsForm" >
+                            <input type="text" id="myInput1" hidden name="myInput" class="inputBox"  >
+
+                            <div class="container-fluid  casil-input text-left">EMAIL
+                            <input type="text" id="i2" name="email"  class="container-fluid" >
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="container-fluid casil-input text-left">COUNTRY / REGION
+                                    <select class="container-fluid d" style="padding-top: 3px;padding-bottom: 3px;" id="i3" name="nationality" disabled>
+                                    <option selected value="" id="nat"></option>
+                                    <option value="Afghanistan">Afghanistan</option>
+                                    <option value="Albania">Albania</option>
+                                    <option value="Algeria">Algeria</option>
+                                    <option value="American Samoa">American Samoa</option>
+                                    <option value="Andorra">Andorra</option>
+                                    <option value="Angola">Angola</option>
+                                    <option value="Anguilla">Anguilla</option>
+                                    <option value="Antartica">Antarctica</option>
+                                    <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                                    <option value="Argentina">Argentina</option>
+                                    <option value="Armenia">Armenia</option>
+                                    <option value="Aruba">Aruba</option>
+                                    <option value="Australia">Australia</option>
+                                    <option value="Austria">Austria</option>
+                                    <option value="Azerbaijan">Azerbaijan</option>
+                                    <option value="Bahamas">Bahamas</option>
+                                    <option value="Bahrain">Bahrain</option>
+                                    <option value="Bangladesh">Bangladesh</option>
+                                    <option value="Barbados">Barbados</option>
+                                    <option value="Belarus">Belarus</option>
+                                    <option value="Belgium">Belgium</option>
+                                    <option value="Belize">Belize</option>
+                                    <option value="Benin">Benin</option>
+                                    <option value="Bermuda">Bermuda</option>
+                                    <option value="Bhutan">Bhutan</option>
+                                    <option value="Bolivia">Bolivia</option>
+                                    <option value="Bosnia and Herzegowina">Bosnia and Herzegowina</option>
+                                    <option value="Botswana">Botswana</option>
+                                    <option value="Bouvet Island">Bouvet Island</option>
+                                    <option value="Brazil">Brazil</option>
+                                    <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                                    <option value="Brunei Darussalam">Brunei Darussalam</option>
+                                    <option value="Bulgaria">Bulgaria</option>
+                                    <option value="Burkina Faso">Burkina Faso</option>
+                                    <option value="Burundi">Burundi</option>
+                                    <option value="Cambodia">Cambodia</option>
+                                    <option value="Cameroon">Cameroon</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Cape Verde">Cape Verde</option>
+                                    <option value="Cayman Islands">Cayman Islands</option>
+                                    <option value="Central African Republic">Central African Republic</option>
+                                    <option value="Chad">Chad</option>
+                                    <option value="Chile">Chile</option>
+                                    <option value="China">China</option>
+                                    <option value="Christmas Island">Christmas Island</option>
+                                    <option value="Cocos Islands">Cocos (Keeling) Islands</option>
+                                    <option value="Colombia">Colombia</option>
+                                    <option value="Comoros">Comoros</option>
+                                    <option value="Congo">Congo</option>
+                                    <option value="Congo">Congo, the Democratic Republic of the</option>
+                                    <option value="Cook Islands">Cook Islands</option>
+                                    <option value="Costa Rica">Costa Rica</option>
+                                    <option value="Cota D'Ivoire">Cote d'Ivoire</option>
+                                    <option value="Croatia">Croatia (Hrvatska)</option>
+                                    <option value="Cuba">Cuba</option>
+                                    <option value="Cyprus">Cyprus</option>
+                                    <option value="Czech Republic">Czech Republic</option>
+                                    <option value="Denmark">Denmark</option>
+                                    <option value="Djibouti">Djibouti</option>
+                                    <option value="Dominica">Dominica</option>
+                                    <option value="Dominican Republic">Dominican Republic</option>
+                                    <option value="East Timor">East Timor</option>
+                                    <option value="Ecuador">Ecuador</option>
+                                    <option value="Egypt">Egypt</option>
+                                    <option value="El Salvador">El Salvador</option>
+                                    <option value="Equatorial Guinea">Equatorial Guinea</option>
+                                    <option value="Eritrea">Eritrea</option>
+                                    <option value="Estonia">Estonia</option>
+                                    <option value="Ethiopia">Ethiopia</option>
+                                    <option value="Falkland Islands">Falkland Islands (Malvinas)</option>
+                                    <option value="Faroe Islands">Faroe Islands</option>
+                                    <option value="Fiji">Fiji</option>
+                                    <option value="Finland">Finland</option>
+                                    <option value="France">France</option>
+                                    <option value="France Metropolitan">France, Metropolitan</option>
+                                    <option value="French Guiana">French Guiana</option>
+                                    <option value="French Polynesia">French Polynesia</option>
+                                    <option value="French Southern Territories">French Southern Territories</option>
+                                    <option value="Gabon">Gabon</option>
+                                    <option value="Gambia">Gambia</option>
+                                    <option value="Georgia">Georgia</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Ghana">Ghana</option>
+                                    <option value="Gibraltar">Gibraltar</option>
+                                    <option value="Greece">Greece</option>
+                                    <option value="Greenland">Greenland</option>
+                                    <option value="Grenada">Grenada</option>
+                                    <option value="Guadeloupe">Guadeloupe</option>
+                                    <option value="Guam">Guam</option>
+                                    <option value="Guatemala">Guatemala</option>
+                                    <option value="Guinea">Guinea</option>
+                                    <option value="Guinea-Bissau">Guinea-Bissau</option>
+                                    <option value="Guyana">Guyana</option>
+                                    <option value="Haiti">Haiti</option>
+                                    <option value="Heard and McDonald Islands">Heard and Mc Donald Islands</option>
+                                    <option value="Holy See">Holy See (Vatican City State)</option>
+                                    <option value="Honduras">Honduras</option>
+                                    <option value="Hong Kong">Hong Kong</option>
+                                    <option value="Hungary">Hungary</option>
+                                    <option value="Iceland">Iceland</option>
+                                    <option value="India">India</option>
+                                    <option value="Indonesia">Indonesia</option>
+                                    <option value="Iran">Iran (Islamic Republic of)</option>
+                                    <option value="Iraq">Iraq</option>
+                                    <option value="Ireland">Ireland</option>
+                                    <option value="Israel">Israel</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Jamaica">Jamaica</option>
+                                    <option value="Japan">Japan</option>
+                                    <option value="Jordan">Jordan</option>
+                                    <option value="Kazakhstan">Kazakhstan</option>
+                                    <option value="Kenya">Kenya</option>
+                                    <option value="Kiribati">Kiribati</option>
+                                    <option value="Democratic People's Republic of Korea">Korea, Democratic People's Republic of</option>
+                                    <option value="Korea">Korea, Republic of</option>
+                                    <option value="Kuwait">Kuwait</option>
+                                    <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                    <option value="Lao">Lao People's Democratic Republic</option>
+                                    <option value="Latvia">Latvia</option>
+                                    <option value="Lebanon" >Lebanon</option>
+                                    <option value="Lesotho">Lesotho</option>
+                                    <option value="Liberia">Liberia</option>
+                                    <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+                                    <option value="Liechtenstein">Liechtenstein</option>
+                                    <option value="Lithuania">Lithuania</option>
+                                    <option value="Luxembourg">Luxembourg</option>
+                                    <option value="Macau">Macau</option>
+                                    <option value="Macedonia">Macedonia, The Former Yugoslav Republic of</option>
+                                    <option value="Madagascar">Madagascar</option>
+                                    <option value="Malawi">Malawi</option>
+                                    <option value="Malaysia">Malaysia</option>
+                                    <option value="Maldives">Maldives</option>
+                                    <option value="Mali">Mali</option>
+                                    <option value="Malta">Malta</option>
+                                    <option value="Marshall Islands">Marshall Islands</option>
+                                    <option value="Martinique">Martinique</option>
+                                    <option value="Mauritania">Mauritania</option>
+                                    <option value="Mauritius">Mauritius</option>
+                                    <option value="Mayotte">Mayotte</option>
+                                    <option value="Mexico">Mexico</option>
+                                    <option value="Micronesia">Micronesia, Federated States of</option>
+                                    <option value="Moldova">Moldova, Republic of</option>
+                                    <option value="Monaco">Monaco</option>
+                                    <option value="Mongolia">Mongolia</option>
+                                    <option value="Montserrat">Montserrat</option>
+                                    <option value="Morocco">Morocco</option>
+                                    <option value="Mozambique">Mozambique</option>
+                                    <option value="Myanmar">Myanmar</option>
+                                    <option value="Namibia">Namibia</option>
+                                    <option value="Nauru">Nauru</option>
+                                    <option value="Nepal">Nepal</option>
+                                    <option value="Netherlands">Netherlands</option>
+                                    <option value="Netherlands Antilles">Netherlands Antilles</option>
+                                    <option value="New Caledonia">New Caledonia</option>
+                                    <option value="New Zealand">New Zealand</option>
+                                    <option value="Nicaragua">Nicaragua</option>
+                                    <option value="Niger">Niger</option>
+                                    <option value="Nigeria">Nigeria</option>
+                                    <option value="Niue">Niue</option>
+                                    <option value="Norfolk Island">Norfolk Island</option>
+                                    <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+                                    <option value="Norway">Norway</option>
+                                    <option value="Oman">Oman</option>
+                                    <option value="Pakistan">Pakistan</option>
+                                    <option value="Palau">Palau</option>
+                                    <option value="Panama">Panama</option>
+                                    <option value="Papua New Guinea">Papua New Guinea</option>
+                                    <option value="Paraguay">Paraguay</option>
+                                    <option value="Peru">Peru</option>
+                                    <option value="Philippines">Philippines</option>
+                                    <option value="Pitcairn">Pitcairn</option>
+                                    <option value="Poland">Poland</option>
+                                    <option value="Portugal">Portugal</option>
+                                    <option value="Puerto Rico">Puerto Rico</option>
+                                    <option value="Qatar">Qatar</option>
+                                    <option value="Reunion">Reunion</option>
+                                    <option value="Romania">Romania</option>
+                                    <option value="Russia">Russian Federation</option>
+                                    <option value="Rwanda">Rwanda</option>
+                                    <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option> 
+                                    <option value="Saint LUCIA">Saint LUCIA</option>
+                                    <option value="Saint Vincent">Saint Vincent and the Grenadines</option>
+                                    <option value="Samoa">Samoa</option>
+                                    <option value="San Marino">San Marino</option>
+                                    <option value="Sao Tome and Principe">Sao Tome and Principe</option> 
+                                    <option value="Saudi Arabia">Saudi Arabia</option>
+                                    <option value="Senegal">Senegal</option>
+                                    <option value="Seychelles">Seychelles</option>
+                                    <option value="Sierra">Sierra Leone</option>
+                                    <option value="Singapore">Singapore</option>
+                                    <option value="Slovakia">Slovakia (Slovak Republic)</option>
+                                    <option value="Slovenia">Slovenia</option>
+                                    <option value="Solomon Islands">Solomon Islands</option>
+                                    <option value="Somalia">Somalia</option>
+                                    <option value="South Africa">South Africa</option>
+                                    <option value="South Georgia">South Georgia and the South Sandwich Islands</option>
+                                    <option value="Span">Spain</option>
+                                    <option value="SriLanka">Sri Lanka</option>
+                                    <option value="St. Helena">St. Helena</option>
+                                    <option value="St. Pierre and Miguelon">St. Pierre and Miquelon</option>
+                                    <option value="Sudan">Sudan</option>
+                                    <option value="Suriname">Suriname</option>
+                                    <option value="Svalbard">Svalbard and Jan Mayen Islands</option>
+                                    <option value="Swaziland">Swaziland</option>
+                                    <option value="Sweden">Sweden</option>
+                                    <option value="Switzerland">Switzerland</option>
+                                    <option value="Syria">Syrian Arab Republic</option>
+                                    <option value="Taiwan">Taiwan, Province of China</option>
+                                    <option value="Tajikistan">Tajikistan</option>
+                                    <option value="Tanzania">Tanzania, United Republic of</option>
+                                    <option value="Thailand">Thailand</option>
+                                    <option value="Togo">Togo</option>
+                                    <option value="Tokelau">Tokelau</option>
+                                    <option value="Tonga">Tonga</option>
+                                    <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                                    <option value="Tunisia">Tunisia</option>
+                                    <option value="Turkey">Turkey</option>
+                                    <option value="Turkmenistan">Turkmenistan</option>
+                                    <option value="Turks and Caicos">Turks and Caicos Islands</option>
+                                    <option value="Tuvalu">Tuvalu</option>
+                                    <option value="Uganda">Uganda</option>
+                                    <option value="Ukraine">Ukraine</option>
+                                    <option value="United Arab Emirates">United Arab Emirates</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="United States">United States</option>
+                                    <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                                    <option value="Uruguay">Uruguay</option>
+                                    <option value="Uzbekistan">Uzbekistan</option>
+                                    <option value="Vanuatu">Vanuatu</option>
+                                    <option value="Venezuela">Venezuela</option>
+                                    <option value="Vietnam">Viet Nam</option>
+                                    <option value="Virgin Islands (British)">Virgin Islands (British)</option>
+                                    <option value="Virgin Islands (U.S)">Virgin Islands (U.S.)</option>
+                                    <option value="Wallis and Futana Islands">Wallis and Futuna Islands</option>
+                                    <option value="Western Sahara">Western Sahara</option>
+                                    <option value="Yemen">Yemen</option>
+                                    <option value="Serbia">Serbia</option>
+                                    <option value="Zambia">Zambia</option>
+                                    <option value="Zimbabwe">Zimbabwe</option>
+                                    </select>
+                                     </div>
+                                </div>
+                            <div class="col-sm-6">
+                                <div class="container-fluid casil-input text-left">DATE OF BIRTH
+                                <input type="text"  id="i4" class="container-fluid d" name="age"  disabled>
+                            </div></div>
+                        </div>    <input type="submit" name="" class="btn dan-btn "id="walana" disabled style="width: 100%;height: 20%;"value="Save Changes">
+                    </form> 
+                </div>      
+            </div>
+                   
+                  </div>
+                
+          
+
+         
+            
+                <div id="section3" style=" background-color: #f7f7f7; margin-right: 5%; margin-left:2%;">
+                    <div class="row">
+                      <div class="col-md-5 bg-dark text-light danl">
+                        
+                        <h3>Riot Account Sign-In</h3>
+                       <p>   
+                        We recommend that you periodically update your password to help prevent unauthorized access to your account.</p>
+                      </div>
+                      <div class="col-md-7 danr">
+                        <form method="post" action="/update_player/Security" class="submitsForms" >
+
+                            <input type="text" id="myInput2" hidden name="myInput" class="inputBox"  >
+                          <div id="ign">
+                             <div class="casil-input">  
+                                USERNAME
+                              <input type="text"  id="i7" class="container-fluid d" name="user"  disabled>
+                            </div>
+                          <div class="casil-input">
+                              Current Password
+                              <input type="password" id="i10" name="pass" class="container-fluid "placeholder="">
+                             
+                            </div>
+                            <p id="passerror"></p>
+                            <div class="casil-input">
+                                New Password
+                              <input type="password" id="i11" name="passs"disabled class="container-fluid "   placeholder="">
+                               
+                            </div>
+                            <div class="casil-input">
+                                Confirm New Password
+                              <input type="password" id="i12" name="passss"disabled class="container-fluid " placeholder="">
+                            
+                            
+                            </div>
+                              <p id="passsserror" style="color:white">
+                            
+                            </p>
+
+                            <input type="submit" name="" class="btn dan-btn "id="btin" style="width: 100%;height: 20%;"value="Save Changes" disabled>
+                            </div>
+                            </form>
+                      </div>
+                    </div>
+          
+          
+                      </div>
+            
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .nav-link.active {
+        background-color: #343a40;
+        color: white;
+    }.nav-link{
+        color:black;
+    }
+   
+</style>
+
+<script>
+    var scrollContainer = document.getElementById('scrollContainer');
+    var scrollSpy = new bootstrap.ScrollSpy(scrollContainer, {
+        target: '#navId'
+    });
+</script>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+        fetch('/api/players_ign') // Replace with your API endpoint
+          .then(response => response.json())
+          .then(accounts => {
+
+              generate(accounts);
+         
+
+          })
+          .catch(err => {
+            console.error('Error fetching account data:', err);
+          });
+      });
+
+      function generate(accounts){
+        const passerror=document.getElementById("passerror")
+        const passss=document.getElementById('i12');
+        const passs=document.getElementById('i11');
+        const i10=document.getElementById('i10');
+     const passsserror=document.getElementById("passsserror")
+        const i1=document.getElementById('i1');
+       const i7=document.getElementById('i7');  
+       const i6=document.getElementById('i6');
+       const notifc=document.getElementById('notifcontainer')
+       const notif=document.getElementById('notif')
+       const myinput1=document.getElementById('myInput1');
+       const myinput2=document.getElementById('myInput2');
+       var originalDate = accounts[0].duration;
+        var currentDate = new Date();
+        const i2=document.getElementById('i2');
+    const i3=document.getElementById('i3');
+    const i4=document.getElementById('i4');
+        myinput1.value=accounts[0].ign;
+        myinput2.value=accounts[0].ign;
+        var convertedDate1 = new Date(currentDate).toLocaleString('en-US', { timeZone: 'Asia/Manila' });   
+var convertedDate = new Date(originalDate).toLocaleString('en-US', { timeZone: 'Asia/Manila' });
+        if(convertedDate>convertedDate1){
+            i1.disabled=true;
+          
+ notif.innerHTML=`   <p id="notif">
+    You can change your in-game name on ${originalDate.substring(0, 10)}. 
+                                </p>`
+
+        } 
+        i2.addEventListener('input', function(event) {
+            if(i2.value==accounts[0].email){
+                document.getElementById('walana').disabled=true
+            }else{
+                const emails = document.getElementById('i2').value;
+const emailRegex = /@yahoo\.com$|@gmail\.com$|@hotmail\.com$|@example\.com$/i;
+
+if (emailRegex.test(emails)) {
+    document.getElementById('walana').disabled=false
+} else {
+    document.getElementById('walana').disabled=true
+  // Perform other actions or show an error message
+}
+                
+            }
+
+        })
+     
+
+        i10.addEventListener('input', function(event) {
+  if(i10.value.length&&i10.value!=accounts[0].password){
+    passerror.innerHTML =  `<p id="passsserror" style="color:white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-diamond" viewBox="0 0 16 16">                                 <path d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.48 1.48 0 0 1 0-2.098zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z"/>                                 <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>                               </svg> Your password do not match to your old password</p>`;
+     passs.disabled=true
+    passss.disabled=true
+  }else{
+passerror.innerHTML=`<p id="passsserror" style="color:white"></p>`;
+    passs.disabled=false
+    passss.disabled=false
+  }
+  // Perform any desired actions with the typed value
+});
+      
+        passss.addEventListener('input', function(event) {
+  const typedValue = event.target.value;
+
+  if(passss.value.length&&passss.value!=passs.value){
+    passsserror.innerHTML =  `<p id="passsserror" style="color:white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-diamond" viewBox="0 0 16 16">                                 <path d="M6.95.435c.58-.58 1.52-.58 2.1 0l6.515 6.516c.58.58.58 1.519 0 2.098L9.05 15.565c-.58.58-1.519.58-2.098 0L.435 9.05a1.48 1.48 0 0 1 0-2.098zm1.4.7a.495.495 0 0 0-.7 0L1.134 7.65a.495.495 0 0 0 0 .7l6.516 6.516a.495.495 0 0 0 .7 0l6.516-6.516a.495.495 0 0 0 0-.7L8.35 1.134z"/>                                 <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z"/>                               </svg> Your new password do not match</p>`;document.getElementById('btin').disabled=true
+  }else{
+passsserror.innerHTML=`<p id="passsserror" style="color:white"></p>`;
+document.getElementById('btin').disabled=false
+  }
+  // Perform any desired actions with the typed value
+});
+
+
+i6.disabled=true;
+       
+    document.getElementById('nav').classList.remove('active');
+    
+    const i5=document.getElementById('myInput');
+    const butt=document.getElementById('butt');
+    
+    i7.value=accounts[0].ign
+    i1.value=accounts[0].name;
+    i2.value=accounts[0].email;
+    i3.value=accounts[0].nationality;
+
+
+    if(i1.disabled==false){
+        document.getElementById('btun').disabled=false
+    }
+
+    const datea = accounts[0].age.toString().substring(0, 10);
+
+     i4.value=datea;
+    i5.value=accounts[0].ign;
+    i6.value=accounts[0].riot_id;
+const dropdown=document.getElementById('drop');
+dropdown.innerHTML=`
+<ul class="navbar-nav navbar-dark flex-row ml-md-auto d-none d-md-flex">
+          <li class="nav-item dropdown" >
+<a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true"aria-expanded="false">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+              </svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+              <a class="dropdown-item" href="#">${accounts[0].ign}</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item " href="/players">Account Details</a>
+              <a class="dropdown-item " href="https://account.riotgames.com/account?anchor_link=mfa-card">Account Security</a>
+              <a class="dropdown-item" href="/logout">Logout</a>
+            
+            
+              </div>
+            </li>
+          </ul>
+              
+              `;
+      }
+
+      function enable(){
+        const i1=document.getElementById('i1');
+    const i2=document.getElementById('i2');
+    const i3=document.getElementById('i3');
+    const i4=document.getElementById('i4');
+    const butt=document.getElementById('butt');
+   
+
+        if(i1.disabled==false){
+       
+  i1.disabled = true;
+  i2.disabled = true;
+  i3.disabled = true;
+  i4.disabled = true;
+  butt.style.display = 'none';
+  i1.style.color = 'gray';
+  i2.style.color = 'gray';
+  i3.style.color = 'gray';
+  i4.style.color = 'gray';
+
+        }else{  
+       
+            i1.disabled = false;
+        i2.disabled = false;
+        i3.disabled = false;
+        i4.disabled = false;
+        butt.style.display = 'block';
+        i1.style.color='black';
+        i2.style.color='black';
+        i3.style.color='black';
+        i4.style.color='black';  
+        }
+      }
+function eyy(){
+    const formData = new FormData(this);
+    fetch('update_player', {
+        method: 'POST',
+        body: formData
+    })
+          .then(response => response.json())
+          .then(accounts => {
+
+              generate(accounts);
+         
+
+          })
+          .catch(err => {
+            console.error('Error fetching account data:', err);
+      
+      });
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('.submitsForm').addEventListener('submit', function (event) {
+        const formData = new FormData(this);
+      
+      
+      
+        event.preventDefault(); //i lagay para d naalis ung page wag kang tanga
+    fetch('/update_player/PersonalInfo', {
+        method: 'POST',
+        body: formData
+    })
+          .then(response => response.json())
+          .then(accounts => {
+          
+            if(accounts.error=='Please Use Another Email'){
+                const email=document.getElementById('i2')
+              email.style. border='2px solid rgb(255, 0, 0)  ';
+email.style.borderRadius =' 0px 0px 5px 5px';
+alert(accounts.error)
+            }else{
+                alert('Email Change Successfully')
+            }
+
+        
+        
+        })
+    })
+})
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('.submitsForms').addEventListener('submit', function (event) {
+        const formData = new FormData(this);
+      
+      
+      
+        event.preventDefault(); //i lagay para d naalis ung page wag kang tanga
+    fetch('/update_player/Security', {
+        method: 'POST',
+        body: formData
+    })
+          .then(response => response.json())
+          .then(accounts => {
+          
+            
+                alert(accounts.msg)
+                window.location.href = "/players"; 
+
+        })
+    })
+})
+
+</script>
+<%- include("../fragment/2ndfoot") %>

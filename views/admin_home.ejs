@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.72.0">
+  <title>Activity Express</title>
+
+  <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/carousel/">
+
+
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+    integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+    integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+
+  <style>
+
+
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="carousel.css" rel="stylesheet">
+</head>
+
+
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark  bg-dark">
+   
+   
+    
+    
+          <div class="container-fluid">
+              <img class="navbar-brand" src="https://9267851.fs1.hubspotusercontent-na1.net/hub/9267851/hubfs/Website%202022/logos/single%20colour/single%20colour%20customer%20logos/grey_Riot_Games-Logo.wine.png?width=300&name=grey_Riot_Games-Logo.wine.png" style="height: 50px;">
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarID"
+                  aria-controls="navbarID" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+             
+                  <ul class="navbar-nav">
+                    
+                    <li class="nav-item">
+                      <a class="btn btn-outline-light btn-dark " href="/logout">Logout</a>
+                    </li>
+                   <li class="nav-item dropdown">
+          
+            
+            
+                  
+                  </li>
+                </ul></div>
+            </li>
+                  
+                  </ul>
+                </div>
+          
+      </nav>
+    </nav>
+  </header>
+ <body>
+
+
+  
+  
+
+ 
+   
+<div class="container">
+  <h1>Admin Home</h1>
+
+  <!-- Account List -->
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">IGN</th>
+        <th scope="col">Email</th>
+        <th scope="col">Nationality</th>
+        <th scope="col">Age</th>
+        <th scope="col">Role</th>
+        <th scope="col">Ban</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody id="accountList">
+      <!-- Account rows will be dynamically generated here -->
+    </tbody>
+  </table>
+
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch('/api/accounts') // Replace with your API endpoint
+        .then(response => response.json())
+        .then(accounts => {
+          generateAccountRows(accounts);
+        })
+        .catch(err => {
+          console.error('Error fetching account data:', err);
+        });
+    });
+
+    function generateAccountRows(accounts) {
+      const accountList = document.getElementById('accountList');
+
+      accounts.forEach(account => {
+        const row = document.createElement('tr');
+
+        const usernameCell = document.createElement('td');
+        usernameCell.textContent = account.ign;
+        row.appendChild(usernameCell);
+
+        const emailCell = document.createElement('td');
+        emailCell.textContent = account.email;
+        row.appendChild(emailCell);
+
+        const nationalitycell = document.createElement('td');
+        nationalitycell.textContent = account.nationality;
+        row.appendChild(nationalitycell);
+
+        const age = document.createElement('td');
+        age.textContent = account.age;
+        row.appendChild(age);
+
+        const role = document.createElement('td');
+        role.textContent = account.role;
+        row.appendChild(role);
+
+        const currentTime = new Date();
+        const banTime=new Date(account.bantime);
+        const actionCell = document.createElement('td'); // Define actionCell variable
+       
+      
+       
+        if (account.bantime != null && banTime.toLocaleString('en-US', { timeZone: 'Asia/Manila' }) > currentTime.toLocaleString('en-US', { timeZone: 'Asia/Manila' })) {
+          const removeBanButton = document.createElement('button');
+          removeBanButton.classList.add('btn', 'btn-warning');
+          removeBanButton.textContent = 'Remove Ban';
+          removeBanButton.onclick = () => removeBan(account.ign, row);
+          actionCell.appendChild(removeBanButton);
+          row.appendChild(actionCell);
+        } else {
+          const banButton = document.createElement('button');
+          banButton.classList.add('btn', 'btn-danger');
+          banButton.textContent = 'Ban';
+          banButton.onclick = () => askForBanDuration(account.ign, row);
+          actionCell.appendChild(banButton);
+          row.appendChild(actionCell);
+        }
+        
+        const delButton = document.createElement('button');
+        delButton.classList.add('btn', 'btn-danger');
+        delButton.textContent = 'Delete';
+        delButton.onclick = () => del(account.ign, row);
+        const delcell = document.createElement('td'); 
+        delcell.appendChild(delButton);
+
+        row.appendChild(delcell);
+        accountList.appendChild(row);
+      });
+    }
+
+    function askForBanDuration(ign, row) {
+      const duration = prompt('Enter ban duration (in hours):');
+      if (duration) {
+        const body = { ign: ign, duration: duration };
+        fetch('/ban', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        })
+          .then(response => {
+            if (response.ok) {
+              console.log(`Banning user ${ign} for ${duration} hours`);
+              const removeBanButton = document.createElement('button');
+              removeBanButton.classList.add('btn', 'btn-warning');
+              removeBanButton.textContent = 'Remove Ban';
+              removeBanButton.onclick = () => removeBan(ign, row);
+              const newActionCell = row.lastElementChild;
+              newActionCell.innerHTML = '';
+              newActionCell.appendChild(removeBanButton);
+            } else {
+              console.error('Error banning account:', response.statusText);
+            }
+          })
+          .catch(err => {
+            console.error('Error banning account:', err);
+          });
+      }
+    }
+
+    function del(ign, row) {
+      const confirmation = confirm('Are you sure you want to delete this Account');
+      if (confirmation) {
+        const body = { ign: ign};
+        fetch('del', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        })
+          .then(response => {
+            if (response.ok) {
+       
+          location.reload();
+            } else {
+              console.error('Error Deleting account:', response.statusText);
+            }
+          })
+          .catch(err => {
+            console.error('Error Deleting account:', err);
+          });
+      }
+    }
+
+    function removeBan(ign, row) {
+  const body = { ign: ign };
+
+  fetch('/Removeban', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  })
+    .then(response => {
+      if (response.ok) {
+        console.log(`Removing ban for user ${ign}`);
+        const banButton = document.createElement('button');
+        banButton.classList.add('btn', 'btn-danger');
+        banButton.textContent = 'Ban';
+        banButton.onclick = () => askForBanDuration(ign, row);
+        const newActionCell = row.lastElementChild;
+        newActionCell.innerHTML = '';
+        newActionCell.appendChild(banButton);
+      } else {
+        console.error('Error removing ban:', response.statusText);
+      }
+    })
+    .catch(err => {
+      console.error('Error removing ban:', err);
+    });
+}
+
+
+  </script>
+</div>
+<%- include("../fragment/2ndfoot") %>
