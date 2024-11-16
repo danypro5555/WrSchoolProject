@@ -1,8 +1,8 @@
 const mysql = require('mysql')
 const conn = mysql.createConnection({
-    host:'localhost',
+    host:'127.0.0.1',
     user: 'root',
-    password: '',
+    password: 'Css10388708002x',
     database: 'summoner_info'
 }) 
 
