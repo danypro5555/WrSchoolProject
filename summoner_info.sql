@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2024 at 02:23 AM
+-- Generation Time: Nov 17, 2024 at 03:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `summoner_info`
 --
-CREATE DATABASE IF NOT EXISTS `summoner_info` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `summoner_info`;
 
 -- --------------------------------------------------------
 
